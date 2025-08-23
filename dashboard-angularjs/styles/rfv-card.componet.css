@@ -1,0 +1,44 @@
+@import url(main.css);
+
+.item-rfvCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 2px 8px;
+    margin-bottom: 10px;
+}
+
+.item-title {
+    font-weight: bolder;
+    font-size: 0.8rem;
+}
+
+.item-info {
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.item-value-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-width: 35%;
+}
+
+.item-progressbar-area {
+    width: 50px;
+    height: 10px;
+
+    border-radius: 20px;
+    background-color: var(--lightGray);
+}
+
+.item-progressbar {
+    height: 100%;
+    width: 60%;
+
+    border-radius: 20px;
+    background-color: var(--mainPurple);
+}

@@ -1,0 +1,64 @@
+@import url(main.css);
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 8px;
+
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  width: 100%;
+  /* ocupa toda a largura do pai */
+  box-sizing: border-box;
+}
+
+.card h3, .card-subtitle {
+  font-size: 0.8rem;
+  color: var(--lightGray)
+}
+
+.card-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4A4A4A;
+}
+
+.card.card--especial {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background: var(--mainPurple);
+  background: linear-gradient(45deg, rgba(109, 28, 213, 1) 0%, rgba(158, 84, 254, 1) 66%);
+
+  aspect-ratio: 1/0.4;
+}
+
+.card.card--especial h3 {
+  font-size: 1rem;
+  font-weight: lighter;
+  color: white;
+}
+
+.card.card--especial .card-value {
+  font-size: 2rem;
+  color: white;
+}
+
+
+.card.card--secondary {
+  aspect-ratio: 2 / 0.8;
+}
+
+.card.card--secondary h3 {
+  font-size: 0.8rem;
+  color: var(--lightGray);
+}
+
+.card.card--secondary .card-value {
+  font-size: 1rem;
+}

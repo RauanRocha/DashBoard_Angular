@@ -1,5 +1,10 @@
+@import url('../components/rfv-card/rfv-card.component.css');
+@import url(metric-card.component.css);
+@import url(pages-table.camponent.css);
+
 :root {
-  --lightGray: #c0c0c0;
+  --mainPurple: #6D1CD5;
+  --lightGray: #9b9b9b;
 }
 
 * {
@@ -60,68 +65,13 @@ body {
   gap: 15px;
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-
-  background: #fff;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-
-  width: 100%;
-  /* ocupa toda a largura do pai */
-  box-sizing: border-box;
-}
-
-.card h3 {
-  font-size: 1.1rem;
-  margin: 0px 0px 8px 0px;
-}
-
-.card-value {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #4A4A4A;
-}
-
-.card.card--especial {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  background: #6D1CD5;
-  background: linear-gradient(45deg, rgba(109, 28, 213, 1) 0%, rgba(158, 84, 254, 1) 66%);
-
-  aspect-ratio: 1/0.4;
-}
-
-.card.card--especial h3 {
-  font-size: 1rem;
-  font-weight: lighter;
-  color: white;
-}
-
-.card.card--especial .card-value {
-  font-size: 2rem;
-  color: white;
-}
-
-
-.card.card--secondary {
-  aspect-ratio: 2 / 0.8;
-}
-
-.card.card--secondary h3 {
-  font-size: 0.8rem;
-  color: var(--lightGray);
-}
-
-.card.card--secondary .card-value {
-  font-size: 1rem;
-}
-
 .ng-isolate-scope {
   width: 100%;
+}
+
+/* Painel Central */
+.center-panel-first-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

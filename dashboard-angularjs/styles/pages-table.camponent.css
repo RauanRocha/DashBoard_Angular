@@ -1,0 +1,23 @@
+@import url(main.css);
+
+
+
+.page-table-thead th {
+    font-size: 0.8rem;
+    color: var(--lightGray);
+    padding: 5px 0px;
+    text-align: left;
+
+    font-weight: bolder;
+
+    border-bottom: 1px solid rgb(223, 223, 223);
+}
+
+.page-table-td {
+    font-size: 0.8rem;
+    padding: 5px 0px;
+    text-align: left;
+
+    font-weight: bolder;
+    border-bottom: 1px solid rgb(223, 223, 223);
+}

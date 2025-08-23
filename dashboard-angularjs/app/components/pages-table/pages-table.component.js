@@ -8,7 +8,7 @@
         <div class="card">
           <h3>Páginas Mais Acessadas</h3>
           <table width="100%">
-            <thead>
+            <thead class="page-table-thead">
               <tr>
                 <th>UV</th>
                 <th>Página</th>
@@ -16,12 +16,19 @@
                 <th>Tendência</th>
               </tr>
             </thead>
-            <tbody>
-              <tr ng-repeat="page in $ctrl.pages">
-                <td>{{page.uv}}</td>
-                <td>{{page.title}}</td>
-                <td>{{page.engajado}}</td>
-                <td>{{page.tendencia}}</td>
+            <tbody class="page-table-tbody">
+              <tr ng-repeat="page in $ctrl.pages" class="page-table-tr">
+                <td class="page-table-td">
+                  {{page.uv}}
+                  <div>
+                    <p></p>
+                    <span><
+
+                  </div>
+                </td>
+                <td class="page-table-td">{{page.title}}</td>
+                <td class="page-table-td">{{page.engajado}}</td>
+                <td class="page-table-td">{{page.tendencia}}</td>
               </tr>
             </tbody>
           </table>

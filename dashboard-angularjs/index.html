@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <title>Real Time Dashboard</title>
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/rfv-card.componet.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
   <script src="app/app.module.js"></script>
   <script src="app/app.controller.js"></script>
@@ -14,6 +16,7 @@
   <script src="app/components/chart-placeholder/chart-placeholder.directive.js"></script>
   <script src="app/components/pages-table/pages-table.component.js"></script>
   <script src="app/components/traffic-card/traffic-card.component.js"></script>
+  <script src="app/components/rfv-card/rfv-card.component.js"></script>
 </head>
 
 <body ng-controller="MainController as vm">
@@ -33,11 +36,16 @@
         <metric-card title="RFV Medio" value="18.5" variant="secondary"></metric-card>
       </div>
 
+      <rfv-card title="" value=""></rfv-card>
+      <rfv-card title="" value=""></rfv-card>
+
     </section>
 
     <section class="center-panel">
-      <metric-card title="Hoje até agora" value="75.401 Pageviews"></metric-card>
-      <metric-card title="Visitantes Únicos" value="39.405 UV"></metric-card>
+      <div class="center-panel-first-section">
+        <metric-card title="Hoje até agora" value="75.401" subtitle="Pageviews"></metric-card>
+        <metric-card title="Visitantes Únicos" value="39.405" subtitle="UV"></metric-card>
+      </div>
       <chart-placeholder></chart-placeholder>
       <pages-table></pages-table>
     </section>
