@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="dashboardApp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Real Time Dashboard</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app/app.module.js"></script>
+  <script src="app/app.controller.js"></script>
+  <script src="app/services/data.service.js"></script>
+  <script src="app/components/header/header.component.js"></script>
+  <script src="app/components/metric-card/metric-card.component.js"></script>
+  <script src="app/components/chart-placeholder/chart-placeholder.directive.js"></script>
+  <script src="app/components/pages-table/pages-table.component.js"></script>
+  <script src="app/components/traffic-card/traffic-card.component.js"></script>
+</head>
+
+<body ng-controller="MainController as vm">
+
+  <app-header></app-header>
+
+  <div class="dashboard-container">
+
+    <section class="left-panel">
+      <metric-card title="Visitantes Online" value="1096" variant="especial"></metric-card>
+
+
+      <div class="left-painel-secund-section">
+        <metric-card title="Recirculação" value="8%" variant="secondary"></metric-card>
+        <metric-card title="Tempo Engajado" value="0:31" variant="secondary"></metric-card>
+        <metric-card title="Rolagem Média" value="68%" variant="secondary"></metric-card>
+        <metric-card title="RFV Medio" value="18.5" variant="secondary"></metric-card>
+      </div>
+
+    </section>
+
+    <section class="center-panel">
+      <metric-card title="Hoje até agora" value="75.401 Pageviews"></metric-card>
+      <metric-card title="Visitantes Únicos" value="39.405 UV"></metric-card>
+      <chart-placeholder></chart-placeholder>
+      <pages-table></pages-table>
+    </section>
+
+    <section class="right-panel">
+      <traffic-card></traffic-card>
+    </section>
+
+  </div>
+</body>
+
+</html>
