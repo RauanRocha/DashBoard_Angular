@@ -5,7 +5,7 @@
     .module('dashboardApp')
     .component('appHeader', {
       template: `
-        <header class="card">
+        <header class="app-header">
           <h2>{{$ctrl.title}}</h2>
           <p>Análise em tempo real</p>
         </header>

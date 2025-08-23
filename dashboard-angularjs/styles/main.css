@@ -1,6 +1,9 @@
 @import url('../components/rfv-card/rfv-card.component.css');
 @import url(metric-card.component.css);
 @import url(pages-table.camponent.css);
+@import url(traffic-card-component.css);
+@import url(searchbar.component.css);
+@import url(app-header.component.css);
 
 :root {
   --mainPurple: #6D1CD5;
@@ -67,6 +70,11 @@ body {
 
 .ng-isolate-scope {
   width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 /* Painel Central */
@@ -74,4 +82,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  gap: 10px;
 }

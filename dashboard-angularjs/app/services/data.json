@@ -1,0 +1,83 @@
+{
+  "realtime": {
+    "visitors_online": 1096,
+    "today_pageviews": 75401,
+    "unique_visitors": 39405,
+    "traffic_breakdown": {
+      "Interno": 44,
+      "Busca": 35,
+      "Social": 14,
+      "Direto": 6,
+      "Links": 2
+    },
+    "metrics": {
+      "recirculation": "8%",
+      "average_time": "0:31",
+      "avg_scroll": "68%",
+      "rfv_mean": 18.5
+    }
+  },
+
+  "traffic_timeseries": {
+    "labels": ["00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"],
+    "series": {
+      "Interno": [1200,1500,1700,1600,1400,1300,1500,2000,2500,3000,3200,3500,3800,4200,4000,3800,3600,3400,3200,3000,2800,2600,2300,2000],
+      "Busca": [400,420,450,460,480,500,520,540,560,600,650,700,760,800,780,760,740,720,700,680,650,620,600,580],
+      "Social": [200,180,160,150,140,130,120,130,150,170,190,210,220,240,230,220,210,200,190,180,170,160,150,140],
+      "Direto": [100,120,130,140,130,120,110,150,180,200,210,220,230,240,230,220,210,200,190,180,170,160,150,140]
+    }
+  },
+
+  "top_pages": [
+    {
+      "uv": 68,
+      "title": "Correio do Povo",
+      "url": "/correio-do-povo",
+      "time_engaged": "0:12",
+      "scroll_percent": 73,
+      "trend": [10,12,15,14,16,18,20]
+    },
+    {
+      "uv": 25,
+      "title": "Adolescente mata pais ...",
+      "url": "/adolescente-mata",
+      "time_engaged": "0:37",
+      "scroll_percent": 82,
+      "trend": [5,6,8,10,9,11,12]
+    },
+    {
+      "uv": 16,
+      "title": "Acúmulo de água alaga ruas ...",
+      "url": "/acumulo-agua",
+      "time_engaged": "0:41",
+      "scroll_percent": 76,
+      "trend": [3,4,5,6,6,7,8]
+    }
+  ],
+
+  "references": [
+    { "name": "Google Discover", "count": 303 },
+    { "name": "Facebook", "count": 99 },
+    { "name": "Google Search", "count": 74 },
+    { "name": "Email, apps, IM", "count": 50 },
+    { "name": "Google News", "count": 11 },
+    { "name": "Twitter", "count": 4 },
+    { "name": "Instagram", "count": 2 }
+  ],
+
+  "rfv_distribution": [
+    { "range": "0-5", "count": 245 },
+    { "range": "6-10", "count": 189 },
+    { "range": "11-15", "count": 156 },
+    { "range": "16-20", "count": 123 },
+    { "range": "21-25", "count": 98 },
+    { "range": "26-30", "count": 67 }
+  ],
+
+  "user_types": [
+    { "type": "Novo", "count": 218 },
+    { "type": "Retornando", "count": 482 },
+    { "type": "Fiel", "count": 389 },
+    { "type": "Não classificado", "count": 7 }
+  ]
+}

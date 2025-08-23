@@ -1,0 +1,14 @@
+@import url(main.css);
+
+.app-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center ;
+    align-items: start;
+    
+    gap: 15px;
+
+    margin: 30px 0px;
+
+    width: 97%;
+}

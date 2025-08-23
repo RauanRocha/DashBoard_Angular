@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <title>Real Time Dashboard</title>
   <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/rfv-card.componet.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
   <script src="app/app.module.js"></script>
@@ -17,11 +16,15 @@
   <script src="app/components/pages-table/pages-table.component.js"></script>
   <script src="app/components/traffic-card/traffic-card.component.js"></script>
   <script src="app/components/rfv-card/rfv-card.component.js"></script>
+  <script src="app/components/searchbar/searchbar.component.js"></script>
+
 </head>
 
 <body ng-controller="MainController as vm">
 
   <app-header></app-header>
+
+  <searchbar></searchbar>
 
   <div class="dashboard-container">
 
@@ -51,7 +54,9 @@
     </section>
 
     <section class="right-panel">
-      <traffic-card></traffic-card>
+      <traffic-card show-bars="true"></traffic-card>
+      <traffic-card show-bars="false"></traffic-card>
+      <traffic-card show-bars="false"></traffic-card>
     </section>
 
   </div>

@@ -1,6 +1,16 @@
 @import url(main.css);
 
+.page-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
+    margin: 15px;
+}
+
+.page-table-table {
+   margin: 15px; 
+}
 
 .page-table-thead th {
     font-size: 0.8rem;
@@ -8,9 +18,18 @@
     padding: 5px 0px;
     text-align: left;
 
+    flex-wrap: wrap;
     font-weight: bolder;
 
     border-bottom: 1px solid rgb(223, 223, 223);
+}
+
+.page-table-tr {
+    cursor: pointer;
+}
+
+.page-table-tr:hover {
+    background-color: rgb(239, 239, 239);
 }
 
 .page-table-td {
@@ -20,4 +39,57 @@
 
     font-weight: bolder;
     border-bottom: 1px solid rgb(223, 223, 223);
+    
+}
+
+.item-table-info-area {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 8px;
+
+    margin: 4px 0px;
+
+    font-size: 0.6rem;
+    color: var(--lightGray);
+}
+
+.item-table-info-area img {
+    width: 15px;
+}
+
+.item-table-info-especial {
+    color: rgb(69, 69, 69);
+    background-color: rgb(207, 207, 207);
+    padding: 2px 4px;
+    border-radius: 2px;
+}
+
+.page-table-title h3 {
+    color: black;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.page-table-title h4 {
+    color: var(--lightGray);
+    font-size: 0.8rem;
+}
+
+.page-table-add-column {
+    width: 30px;
+    height: 30px;
+
+    padding: 5px;
+
+    border: 1px solid var(--lightGray);
+    border-radius: 10px;
+
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.page-table-add-column:hover {
+    background-color: rgb(226, 226, 226);
+    transform: scale(1.1);
 }
