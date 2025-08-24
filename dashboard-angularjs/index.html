@@ -7,20 +7,23 @@
   <link rel="stylesheet" href="styles/main.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+
   <script src="app/app.module.js"></script>
   <script src="app/app.controller.js"></script>
   <script src="app/services/data.service.js"></script>
   <script src="app/components/header/header.component.js"></script>
   <script src="app/components/metric-card/metric-card.component.js"></script>
-  <script src="app/components/left-panel/left-panel.component.js"></script>
   <script src="app/components/chart-placeholder/chart-placeholder.directive.js"></script>
   <script src="app/components/pages-table/pages-table.component.js"></script>
   <script src="app/components/traffic-card/traffic-card.component.js"></script>
   <script src="app/components/data-card/data-card.component.js"></script>
   <script src="app/components/searchbar/searchbar.component.js"></script>
   <script src="app/components/rfv-card/rfv-card.component.js"></script>
+  <script src="app/components/left-panel/left-panel.component.js"></script>
+  <script src="app/components/right-panel/right-panel.component.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body ng-controller="MainController as vm">
@@ -30,25 +33,22 @@
   <searchbar></searchbar>
 
   <div class="dashboard-container">
-
     <left-panel></left-panel>
-    
+
     <section class="center-panel">
       <div class="center-panel-first-section">
         <metric-card title="Hoje até agora" value="75.401" subtitle="Pageviews"></metric-card>
         <metric-card title="Visitantes Únicos" value="39.405" subtitle="UV"></metric-card>
       </div>
-      <chart-placeholder></chart-placeholder>
+      <div class="chart-container">
+        <chart-placeholder></chart-placeholder>
+      </div>
       <pages-table></pages-table>
     </section>
 
-    <section class="right-panel">
-      <traffic-card show-bars="true"></traffic-card>
-      <traffic-card show-bars="false"></traffic-card>
-      <traffic-card show-bars="false"></traffic-card>
-    </section>
-
+    <right-panel></right-panel>
   </div>
 </body>
 
 </html>
+

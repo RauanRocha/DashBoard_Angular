@@ -14,11 +14,10 @@
     var service = {
       loadAll: loadAll,
       getMetrics: getMetrics,
-      getPages: getPages,
       getRealtime: getRealtime,
       getTopPages: getTopPages,
-      getRFVDistribution: getRFVDistribution, 
-      getUsersType: getUsersType
+      getData: getData,
+      getTrafficTimeseries: getTrafficTimeseries
     };
 
     return service;
@@ -31,59 +30,46 @@
       });
     }
 
-    function getMetrics() {
-      return loadAll().then(function (data) {
-        var rt = data.realtime || {};
-        var metrics = [];
+function getMetrics() {
+  return loadAll().then(function (data) {
+    var rt = data.realtime || {};
+    var metrics = [];
 
-        metrics.push({
-          title: 'Visitantes Online',
-          value: rt.visitors_online,
-          variant: 'especial'
-        });
+    // Simulando a atualização dos valores com randomizeValue
+    metrics.push({
+      title: 'Visitantes Online',
+      value: randomizeValue(rt.visitors_online, 0.1), // Aplicando a variação de 10%
+      variant: 'especial'
+    });
 
-        metrics.push({
-          title: 'Recirculação',
-          value: (rt.metrics && rt.metrics.recirculation) || '-',
-          variant: 'secondary'
-        });
+    metrics.push({
+      title: 'Recirculação',
+      value: randomizeValue((rt.metrics && rt.metrics.recirculation) || 0, 0.1), // Aplicando a variação de 10%
+      variant: 'secondary'
+    });
 
-        metrics.push({
-          title: 'Tempo Engajado',
-          value: (rt.metrics && rt.metrics.average_time) || '-',
-          variant: 'secondary'
-        });
+    metrics.push({
+      title: 'Tempo Engajado',
+      value: randomizeValue((rt.metrics && rt.metrics.average_time) || 0, 0.1), // Aplicando a variação de 10%
+      variant: 'secondary'
+    });
 
-        metrics.push({
-          title: 'Rolagem Média',
-          value: (rt.metrics && rt.metrics.avg_scroll) || '-',
-          variant: 'secondary'
-        });
+    metrics.push({
+      title: 'Rolagem Média',
+      value: randomizeValue((rt.metrics && rt.metrics.avg_scroll) || 0, 0.1), // Aplicando a variação de 10%
+      variant: 'secondary'
+    });
 
-        metrics.push({
-          title: 'RFV Medio',
-          value: (rt.metrics && rt.metrics.rfv_mean) || '-',
-          variant: 'secondary'
-        });
+    metrics.push({
+      title: 'RFV Médio',
+      value: randomizeValue((rt.metrics && rt.metrics.rfv_mean) || 0, 0.1), // Aplicando a variação de 10%
+      variant: 'secondary'
+    });
 
-        return metrics;
-      });
-    }
+    return metrics;
+  });
+}
 
-    function getPages() {
-      return loadAll().then(function (data) {
-        return (data.top_pages || []).map(function (p) {
-          return {
-            title: p.title,
-            uv: p.uv,
-            time_engaged: p.time_engaged,
-            scroll_percent: p.scroll_percent,
-            url: p.url,
-            trend: p.trend
-          };
-        });
-      });
-    }
 
     function getRealtime() {
       return loadAll().then(function (data) {
@@ -125,25 +111,14 @@
       });
     }
 
-    function getRFVDistribution() {
+    function getData(dataKey, textKey, countKey, randomizeFactor) {
       return loadAll().then(function (data) {
-        return data.rfv_distribution.map(item => {
+        return data[dataKey].map(item => {
           return {
-            text: item.range,
-            count: randomizeValue(item.count, 0.2)
+            text: item[textKey],
+            count: randomizeFactor ? randomizeValue(item[countKey], randomizeFactor) : item[countKey]
           };
-        });
-      });
-    }
-
-    function getUsersType() {
-      return loadAll().then(function (data) {
-        return data.user_types.map(item => {
-          return {
-            text: item.type,
-            count: randomizeValue(item.count, 0.5)
-          };
-        });
+        }).sort((a, b) => b.count - a.count);
       });
     }
 
@@ -155,5 +130,20 @@
       const result = value + delta;
       return result < 0 ? 0 : result;
     }
+
+    function getTrafficTimeseries() {
+      return loadAll().then(function (data) {
+        var timeseries = data.traffic_timeseries;
+
+        return {
+          labels: timeseries.labels,
+          series: Object.keys(timeseries.series),
+          data: Object.keys(timeseries.series).map(function (key) {
+            return timeseries.series[key];
+          })
+        };
+      });
+    }
+
   }
 })();

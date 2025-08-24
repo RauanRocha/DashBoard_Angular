@@ -44,6 +44,8 @@
   padding: 6px 8px;
   outline: none;
   min-width: 160px;
+
+  width: 90%;
 }
 
 .search-btn {
@@ -102,4 +104,29 @@
   padding: 6px;
   cursor: pointer;
   font-size: 16px;
+
+  transition: 0.3s;
 }
+
+.filter-icon:hover {
+  background: #ececec;
+  scale: 1.1;
+}
+
+
+.chip button {
+  border: none;
+  background-color: transparent;
+
+  transition: 0.2s;
+  cursor: pointer;
+
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.chip button:hover {
+  color: white;
+  background-color: rgb(251, 163, 251);
+}
+

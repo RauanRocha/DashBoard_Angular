@@ -43,13 +43,18 @@ angular
         const result = ctrl.fetchFunction();
         if (result && typeof result.then === 'function') {
           result.then(data => {
-            const maxValue = 300;
-            ctrl.rfv_distribution = data.map(item => {
-              return {
-                ...item,
-                progress: Math.min((item.count / maxValue) * 100, 100)
-              };
-            });
+            if (data && data.length > 0) {
+              // Encontrar o maior valor de 'count' na lista
+              const maxValue = Math.max(...data.map(item => item.count));
+
+              // Atualizar os itens com o cálculo da progress bar
+              ctrl.rfv_distribution = data.map(item => {
+                return {
+                  ...item,
+                  progress: maxValue > 0 ? Math.min((item.count / maxValue) * 100, 100) : 0
+                };
+              });
+            }
           });
         }
       }

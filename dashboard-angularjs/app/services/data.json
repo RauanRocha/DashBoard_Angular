@@ -3,13 +3,6 @@
     "visitors_online": 2007,
     "today_pageviews": 75401,
     "unique_visitors": 39405,
-    "traffic_breakdown": {
-      "Interno": 44,
-      "Busca": 35,
-      "Social": 14,
-      "Direto": 6,
-      "Links": 2
-    },
     "metrics": {
       "recirculation": 20,
       "average_time": 39,
@@ -17,6 +10,14 @@
       "rfv_mean": 20.6
     }
   },
+
+  "traffic_breakdown": [
+    { "name": "Interno", "count": 44 },
+    { "name": "Busca", "count": 35 },
+    { "name": "Social", "count": 14 },
+    { "name": "Direto", "count": 6 },
+    { "name": "Jogos", "count": 2 }
+  ],
 
   "traffic_timeseries": {
     "labels": ["00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"],
@@ -97,6 +98,14 @@
     { "name": "Instagram", "count": 2 }
   ],
 
+  "page_categories": [
+    { "name": "Politica", "count": 16050 },
+    { "name": "Esportes", "count": 13988 },
+    { "name": "Entreterimento", "count": 5000 },
+    { "name": "Arte", "count": 3650 },
+    { "name": "Jogos", "count": 1750 }
+  ],
+
   "rfv_distribution": [
     { "range": "0-5", "count": 180 },
     { "range": "6-10", "count": 189 },
@@ -113,3 +122,4 @@
     { "type": "Não classificado", "count": 7 }
   ]
 }
+
