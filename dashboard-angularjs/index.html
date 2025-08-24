@@ -12,12 +12,15 @@
   <script src="app/services/data.service.js"></script>
   <script src="app/components/header/header.component.js"></script>
   <script src="app/components/metric-card/metric-card.component.js"></script>
+  <script src="app/components/left-panel/left-panel.component.js"></script>
   <script src="app/components/chart-placeholder/chart-placeholder.directive.js"></script>
   <script src="app/components/pages-table/pages-table.component.js"></script>
   <script src="app/components/traffic-card/traffic-card.component.js"></script>
-  <script src="app/components/rfv-card/rfv-card.component.js"></script>
+  <script src="app/components/data-card/data-card.component.js"></script>
   <script src="app/components/searchbar/searchbar.component.js"></script>
+  <script src="app/components/rfv-card/rfv-card.component.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body ng-controller="MainController as vm">
@@ -28,22 +31,8 @@
 
   <div class="dashboard-container">
 
-    <section class="left-panel">
-      <metric-card title="Visitantes Online" value="1096" variant="especial"></metric-card>
-
-
-      <div class="left-painel-secund-section">
-        <metric-card title="Recirculação" value="8%" variant="secondary"></metric-card>
-        <metric-card title="Tempo Engajado" value="0:31" variant="secondary"></metric-card>
-        <metric-card title="Rolagem Média" value="68%" variant="secondary"></metric-card>
-        <metric-card title="RFV Medio" value="18.5" variant="secondary"></metric-card>
-      </div>
-
-      <rfv-card title="" value=""></rfv-card>
-      <rfv-card title="" value=""></rfv-card>
-
-    </section>
-
+    <left-panel></left-panel>
+    
     <section class="center-panel">
       <div class="center-panel-first-section">
         <metric-card title="Hoje até agora" value="75.401" subtitle="Pageviews"></metric-card>

@@ -1,4 +1,5 @@
-@import url('../components/rfv-card/rfv-card.component.css');
+
+@import url(data-card.component.css);
 @import url(metric-card.component.css);
 @import url(pages-table.camponent.css);
 @import url(traffic-card-component.css);
@@ -84,4 +85,8 @@ body {
   align-items: center;
 
   gap: 10px;
+}
+
+.left-panel-main {
+  width: 100%;
 }

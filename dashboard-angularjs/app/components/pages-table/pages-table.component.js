@@ -11,10 +11,7 @@
               <h3>Páginas Mais Acessadas</h3>
               <h4>Principais Artigos ordenados por engajamento</h4>
             </div>
-              
-            <img class="page-table-add-column" src="https://cdn-icons-png.flaticon.com/128/16958/16958897.png"
-            
-            </div>
+            <img class="page-table-add-column" src="https://cdn-icons-png.flaticon.com/128/16958/16958897.png">
           </div>
           <table class="page-table-table" width="100%">
             <thead class="page-table-thead">
@@ -38,16 +35,71 @@
                     <span class="item-table-info-especial">Brasil Urgente</span>
                   </div>
                 </td>
-                <td class="page-table-td">{{page.engajado}}</td>
-                <td class="page-table-td">{{page.engajado}}</td>
-                <td class="page-table-td">{{page.tendencia}}</td>
+                <td class="page-table-td">{{page.time_engaged}}</td>
+                <td class="page-table-td">{{page.scroll_percent}}%</td>
+                <td class="page-table-td">
+                  <canvas class="trend-chart" id="trend-{{$index}}"></canvas>
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
       `,
-      controller: function (DataService) {
-        this.pages = DataService.getPages();
-      }
+      controller: PagesTableController
     });
+
+  PagesTableController.$inject = ['DataService', '$interval', '$scope', '$timeout'];
+
+  function PagesTableController(DataService, $interval, $scope, $timeout) {
+    var ctrl = this;
+    ctrl.pages = [];
+
+    function fetchPages() {
+      DataService.getTopPages().then(function (pages) {
+        ctrl.pages = pages;
+        renderTrends();
+      });
+    }
+
+    ctrl.$onInit = function () {
+      fetchPages();
+
+      var refreshInterval = $interval(fetchPages, 50000);
+
+      $scope.$on('$destroy', function () {
+        $interval.cancel(refreshInterval);
+      });
+    };
+
+    function renderTrends() {
+      $timeout(function () {
+        ctrl.pages.forEach(function (page, index) {
+          var canvas = document.getElementById("trend-" + index);
+          if (canvas) {
+            var ctx = canvas.getContext("2d");
+            new Chart(ctx, {
+              type: "line",
+              data: {
+                labels: page.trend.map((_, i) => i + 1),
+                datasets: [{
+                  data: page.trend,
+                  borderColor: "#7c3aed",
+                  borderWidth: 2,
+                  fill: false,
+                  tension: 0.4,
+                  pointRadius: 0
+                }]
+              },
+              options: {
+                plugins: { legend: { display: false } },
+                responsive: false,
+                scales: { x: { display: false }, y: { display: false } }
+              }
+            });
+          }
+        });
+      }, 0);
+    }
+
+  }
 })();

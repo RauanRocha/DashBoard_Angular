@@ -1,6 +1,6 @@
 {
   "realtime": {
-    "visitors_online": 1096,
+    "visitors_online": 2007,
     "today_pageviews": 75401,
     "unique_visitors": 39405,
     "traffic_breakdown": {
@@ -11,10 +11,10 @@
       "Links": 2
     },
     "metrics": {
-      "recirculation": "8%",
-      "average_time": "0:31",
-      "avg_scroll": "68%",
-      "rfv_mean": 18.5
+      "recirculation": 20,
+      "average_time": 39,
+      "avg_scroll": 70,
+      "rfv_mean": 20.6
     }
   },
 
@@ -28,30 +28,62 @@
     }
   },
 
-  "top_pages": [
+    "top_pages": [
     {
       "uv": 68,
       "title": "Correio do Povo",
       "url": "/correio-do-povo",
-      "time_engaged": "0:12",
+      "time_engaged": 12,
       "scroll_percent": 73,
-      "trend": [10,12,15,14,16,18,20]
+      "trend": [10, 12, 15, 14, 16, 18, 20]
     },
     {
       "uv": 25,
       "title": "Adolescente mata pais ...",
       "url": "/adolescente-mata",
-      "time_engaged": "0:37",
+      "time_engaged": 37,
       "scroll_percent": 82,
-      "trend": [5,6,8,10,9,11,12]
+      "trend": [5, 6, 8, 10, 9, 11, 12]
     },
     {
       "uv": 16,
       "title": "Acúmulo de água alaga ruas ...",
       "url": "/acumulo-agua",
-      "time_engaged": "0:41",
+      "time_engaged": 41,
       "scroll_percent": 76,
-      "trend": [3,4,5,6,6,7,8]
+      "trend": [3, 4, 5, 6, 6, 7, 8]
+    },
+    {
+      "uv": 54,
+      "title": "Economia em alta no país",
+      "url": "/economia-alta",
+      "time_engaged": 28,
+      "scroll_percent": 69,
+      "trend": [7, 8, 9, 11, 12, 14, 15]
+    },
+    {
+      "uv": 30,
+      "title": "Tecnologia revoluciona ensino",
+      "url": "/tecnologia-ensino",
+      "time_engaged": 33,
+      "scroll_percent": 80,
+      "trend": [6, 7, 8, 9, 10, 10, 11]
+    },
+    {
+      "uv": 22,
+      "title": "Saúde pública recebe investimento",
+      "url": "/saude-investimento",
+      "time_engaged": 40,
+      "scroll_percent": 74,
+      "trend": [4, 5, 5, 6, 7, 8, 9]
+    },
+    {
+      "uv": 45,
+      "title": "Esportes: campeonato estadual",
+      "url": "/esportes-campeonato",
+      "time_engaged": 26,
+      "scroll_percent": 77,
+      "trend": [8, 9, 10, 11, 12, 13, 14]
     }
   ],
 
@@ -66,7 +98,7 @@
   ],
 
   "rfv_distribution": [
-    { "range": "0-5", "count": 245 },
+    { "range": "0-5", "count": 180 },
     { "range": "6-10", "count": 189 },
     { "range": "11-15", "count": 156 },
     { "range": "16-20", "count": 123 },
