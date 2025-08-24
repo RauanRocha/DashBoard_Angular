@@ -1,4 +1,4 @@
-@import url(data-card.component.css);
+@import url(rfv-card.component.css);
 @import url(metric-card.component.css);
 @import url(pages-table.camponent.css);
 @import url(traffic-card-component.css);
@@ -7,7 +7,10 @@
 
 :root {
   --mainPurple: #6D1CD5;
+  --mainPink: #e514bbdd;
+  --mainGreen: #14e5d0dd;
   --lightGray: #9b9b9b;
+  --lightlightGray: #d8d8d8;
 }
 
 * {
@@ -53,7 +56,7 @@ body {
   gap: 25px;
 }
 
-.left-painel-secund-section {
+.left-panel-secondary-section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -115,7 +118,6 @@ body {
     gap: 15px;
   }
 
-  /* Ajustes para se reorganizarem melhor */
   .left-panel,
   .center-panel,
   .right-panel {

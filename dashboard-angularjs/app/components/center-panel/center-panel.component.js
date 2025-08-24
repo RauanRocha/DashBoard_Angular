@@ -29,7 +29,6 @@
       controller: CenterPanelController
     });
 
-  // 💡 Injete o DataService aqui:
   CenterPanelController.$inject = ['$interval', 'DataService'];
 
   function CenterPanelController($interval, DataService) {
@@ -39,14 +38,16 @@
     ctrl.$onInit = function () {
       fetchRealtime();
 
-      // Atualizar a cada 15 segundos (15000 ms)
+      // Atualiza os dados em tempo real a cada 15 segundos
       $interval(fetchRealtime, 15000);
     };
 
     function fetchRealtime() {
-      // ⚠️ Use o DataService corretamente aqui:
       DataService.getRealtime().then(function (data) {
-        ctrl.data = data[0]; // Supondo que seja um array
+        // Considera que o retorno é um array e usa o primeiro item como dado principal
+        if (data && data.length > 0) {
+          ctrl.data = data[0];
+        }
       });
     }
   }

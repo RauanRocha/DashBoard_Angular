@@ -25,46 +25,38 @@
           vm.data = [];
           vm.chart = null;
 
-          // Recuperando os dados do serviço DataService
-          DataService.getTrafficTimeseries().then(function (timeseries) {
-            vm.labels = timeseries.labels;
-            vm.series = timeseries.series;
-            vm.data = timeseries.data;
+          DataService.getTrafficTimeseries()
+            .then(function (timeseries) {
+              vm.labels = timeseries.labels;
+              vm.series = timeseries.series;
+              vm.data = timeseries.data;
 
-            // Adiar a execução da criação do gráfico para garantir que o DOM foi renderizado
-            $timeout(function () {
-              createChart();
-            }, 0);
-          }).catch(function (error) {
-            console.error("Erro ao carregar dados do DataService:", error);
-          });
+              // Aguarda ciclo do Angular antes de renderizar o gráfico
+              $timeout(createChart, 0);
+            })
+            .catch(function (error) {
+              console.error("Erro ao carregar dados do DataService:", error);
+            });
 
-          // Função para criar o gráfico
           function createChart() {
-            var ctx = document.getElementById('trafficChart').getContext('2d');
+            var ctx = document.getElementById('trafficChart')?.getContext('2d');
+            if (!ctx) return console.error("Contexto do Canvas não encontrado.");
 
-            // Verifica se o contexto do canvas foi obtido corretamente
-            if (!ctx) {
-              console.error("Contexto do Canvas não encontrado.");
-              return;
-            }
+            var colors = ['#8e44ad', '#e74c3c', '#3498db', '#2ecc71'];
 
-            // Configuração dos datasets para o gráfico
             var datasets = vm.data.map(function (data, index) {
-              const colors = ['#8e44ad', '#e74c3c', '#3498db', '#2ecc71']; // Ajuste das cores
               return {
                 label: vm.series[index],
                 data: data,
-                borderColor: colors[index],  // Cor da linha
-                backgroundColor: colors[index],  // Cor do fundo (sem opacidade)
-                fill: true,  // Preencher a área abaixo da linha
+                borderColor: colors[index],
+                backgroundColor: colors[index],
+                fill: true,
                 tension: 0,
-                pointRadius: 0,  // Tamanho das bolinhas na legenda
+                pointRadius: 0,
                 borderWidth: 2,
               };
             });
 
-            // Criando o gráfico com Chart.js
             vm.chart = new Chart(ctx, {
               type: 'line',
               data: {
@@ -76,13 +68,12 @@
                 maintainAspectRatio: false,
                 plugins: {
                   legend: {
-                    position: 'top', // Legenda no topo
-                    align: 'start', // Alinhar a legenda à esquerda
-                    padding: 800,
+                    position: 'top',
+                    align: 'start',
                     labels: {
-                      usePointStyle: true, // Usar bolinhas na legenda
-                      pointStyle: 'circle', // Usar círculos para as bolinhas
-                      boxWidth: 6, // Tamanho da bolinha na legenda
+                      usePointStyle: true,
+                      pointStyle: 'circle',
+                      boxWidth: 6,
                       boxHeight: 6,
                       padding: 20
                     }
@@ -92,15 +83,11 @@
                   y: {
                     beginAtZero: true,
                     stacked: true,
-                    grid: {
-                      display: false  // Remover as linhas de quadriculado do eixo Y
-                    }
+                    grid: { display: false }
                   },
                   x: {
                     stacked: true,
-                    grid: {
-                      display: false  // Remover as linhas de quadriculado do eixo X
-                    }
+                    grid: { display: false }
                   }
                 },
               }

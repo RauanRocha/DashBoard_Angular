@@ -11,7 +11,11 @@
               <h3>Páginas Mais Acessadas</h3>
               <h4>Principais Artigos ordenados por engajamento</h4>
             </div>
-            <img class="page-table-add-column" src="https://cdn-icons-png.flaticon.com/128/16958/16958897.png">
+            <!-- Ícone de adicionar coluna -->
+            <img class="page-table-add-column" 
+                 src="https://cdn-icons-png.flaticon.com/128/16958/16958897.png" 
+                 ng-click="$ctrl.addColumn()"
+                 style="cursor:pointer;">
           </div>
           <table class="page-table-table" width="100%">
             <thead class="page-table-thead">
@@ -54,6 +58,11 @@
     var ctrl = this;
     ctrl.pages = [];
 
+    // Novo método para o click no ícone
+    ctrl.addColumn = function () {
+      alert("Função de adicionar coluna indisponível no momento.");
+    };
+
     function fetchPages() {
       DataService.getTopPages().then(function (pages) {
         ctrl.pages = pages;
@@ -64,7 +73,7 @@
     ctrl.$onInit = function () {
       fetchPages();
 
-      var refreshInterval = $interval(fetchPages, 50000);
+      var refreshInterval = $interval(fetchPages, 20000);
 
       $scope.$on('$destroy', function () {
         $interval.cancel(refreshInterval);

@@ -6,7 +6,7 @@
     .component('leftPanel', {
       template: `
         <section class="left-panel">
-          <!-- Card principal -->
+
           <div class="left-panel-main">
             <metric-card ng-if="$ctrl.mainCard"
                          title="{{$ctrl.mainCard.title}}"
@@ -16,8 +16,7 @@
             </metric-card>
           </div>
 
-          <!-- Small metric cards -->
-          <div class="left-painel-secund-section">
+          <div class="left-panel-secondary-section">
             <metric-card ng-repeat="c in $ctrl.smallCards track by $index"
                          title="{{c.title}}"
                          value="{{c.value}}"
@@ -31,37 +30,39 @@
           </rfv-card>
 
           <rfv-card
-            title="RFV ( Referencia, Frequencia, Volume )"
+            title="RFV ( Referência, Frequência, Volume )"
             fetch-function="$ctrl.getRFVDistribution()">
           </rfv-card>
-          
+
         </section>
       `,
       controller: LeftPanelCtrl
     });
 
   LeftPanelCtrl.$inject = ['DataService', '$log', '$interval'];
+
   function LeftPanelCtrl(DataService, $log, $interval) {
     var vm = this;
     vm.mainCard = null;
     vm.smallCards = [];
-    vm.showInfo = true;
 
     vm.getRFVDistribution = function () {
+      // Busca distribuição RFV: ( Nome Item, Nome Variavel Texto , Nome Variavel Texto, Porcentagem de Variação ( Caso Necessário )) <--
       return DataService.getData('rfv_distribution', 'range', 'count', 0.2);
     };
 
     vm.getUsersType = function () {
+      // Busca tipos de Usuarios: ( Nome Item, Nome Variavel Texto , Nome Variavel Texto, Porcentagem de Variação ( Caso Necessário )) <--
       return DataService.getData('user_types', 'type', 'count', 0.5);
     };
-    
+
     function updateMetrics() {
       $log.info('[leftPanel] Atualizando métricas...');
       DataService.getMetrics().then(function (metrics) {
         if (!metrics || metrics.length === 0) return;
 
+        // Assume que a primeira métrica é o card principal e as demais são secundárias
         vm.mainCard = metrics[0];
-
         vm.smallCards = metrics.slice(1);
       }).catch(function (err) {
         $log.error('[leftPanel] Erro ao atualizar métricas', err);
@@ -69,9 +70,10 @@
     }
 
     vm.$onInit = function () {
-
       updateMetrics();
-      $interval(updateMetrics, 10000); 
+
+      // Atualiza os dados em tempo real a cada 15 segundos
+      $interval(updateMetrics, 10000);
     };
   }
 })();

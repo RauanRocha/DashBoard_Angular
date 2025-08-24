@@ -34,7 +34,7 @@
 
     border-radius: 16px;
 
-    background-color: var(--lightGray);
+    background-color: var(--lightlightGray);
 }
 
 .traffic-item-progressBar {
@@ -44,4 +44,16 @@
     border-radius: 16px;
 
     background-color: var(--mainPurple);
+}
+
+.bgPurple {
+    background-color: var(--mainPurple);
+}
+
+.bgPink {
+    background-color: var(--mainPink);   
+}
+
+.bgGreen {
+    background-color: var(--mainGreen);   
 }
