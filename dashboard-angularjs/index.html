@@ -22,6 +22,7 @@
   <script src="app/components/rfv-card/rfv-card.component.js"></script>
   <script src="app/components/left-panel/left-panel.component.js"></script>
   <script src="app/components/right-panel/right-panel.component.js"></script>
+  <script src="app/components/center-panel/center-panel.component.js"></script>
 
 
 </head>
@@ -35,16 +36,7 @@
   <div class="dashboard-container">
     <left-panel></left-panel>
 
-    <section class="center-panel">
-      <div class="center-panel-first-section">
-        <metric-card title="Hoje até agora" value="75.401" subtitle="Pageviews"></metric-card>
-        <metric-card title="Visitantes Únicos" value="39.405" subtitle="UV"></metric-card>
-      </div>
-      <div class="chart-container">
-        <chart-placeholder></chart-placeholder>
-      </div>
-      <pages-table></pages-table>
-    </section>
+    <center-panel></center-panel>
 
     <right-panel></right-panel>
   </div>

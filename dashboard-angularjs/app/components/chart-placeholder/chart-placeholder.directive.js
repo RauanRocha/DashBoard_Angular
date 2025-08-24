@@ -58,7 +58,7 @@
                 borderColor: colors[index],  // Cor da linha
                 backgroundColor: colors[index],  // Cor do fundo (sem opacidade)
                 fill: true,  // Preencher a área abaixo da linha
-                tension: 0.4,
+                tension: 0,
                 pointRadius: 0,  // Tamanho das bolinhas na legenda
                 borderWidth: 2,
               };

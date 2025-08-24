@@ -30,71 +30,74 @@
       });
     }
 
-function getMetrics() {
-  return loadAll().then(function (data) {
-    var rt = data.realtime || {};
-    var metrics = [];
+    function getMetrics() {
+      return loadAll().then(function (data) {
+        var rt = data.realtime || {};
+        var metrics = [];
 
-    // Simulando a atualização dos valores com randomizeValue
-    metrics.push({
-      title: 'Visitantes Online',
-      value: randomizeValue(rt.visitors_online, 0.1), // Aplicando a variação de 10%
-      variant: 'especial'
-    });
+        metrics.push({
+          title: 'Visitantes Online',
+          value: randomizeValue(rt.visitors_online, 0.1),
+          variant: 'especial'
+        });
 
-    metrics.push({
-      title: 'Recirculação',
-      value: randomizeValue((rt.metrics && rt.metrics.recirculation) || 0, 0.1), // Aplicando a variação de 10%
-      variant: 'secondary'
-    });
+        metrics.push({
+          title: 'Recirculação',
+          value: randomizeValue((rt.metrics && rt.metrics.recirculation) || 0, 0.1),
+          variant: 'secondary'
+        });
 
-    metrics.push({
-      title: 'Tempo Engajado',
-      value: randomizeValue((rt.metrics && rt.metrics.average_time) || 0, 0.1), // Aplicando a variação de 10%
-      variant: 'secondary'
-    });
+        metrics.push({
+          title: 'Tempo Engajado',
+          value: randomizeValue((rt.metrics && rt.metrics.average_time) || 0, 0.1),
+          variant: 'secondary'
+        });
 
-    metrics.push({
-      title: 'Rolagem Média',
-      value: randomizeValue((rt.metrics && rt.metrics.avg_scroll) || 0, 0.1), // Aplicando a variação de 10%
-      variant: 'secondary'
-    });
+        metrics.push({
+          title: 'Rolagem Média',
+          value: randomizeValue((rt.metrics && rt.metrics.avg_scroll) || 0, 0.1),
+          variant: 'secondary'
+        });
 
-    metrics.push({
-      title: 'RFV Médio',
-      value: randomizeValue((rt.metrics && rt.metrics.rfv_mean) || 0, 0.1), // Aplicando a variação de 10%
-      variant: 'secondary'
-    });
+        metrics.push({
+          title: 'RFV Médio',
+          value: randomizeValue((rt.metrics && rt.metrics.rfv_mean) || 0, 0.1),
+          variant: 'secondary'
+        });
 
-    return metrics;
-  });
-}
-
+        return metrics;
+      });
+    }
 
     function getRealtime() {
       return loadAll().then(function (data) {
-        return data.rfv_distribution.map(item => {
-          return {
-            visitors_online: randomizeValue(visitors_online, 0.2),
-            today_pageviews: randomizeValue(today_pageviews, 0.2),
-            unique_visitors: randomizeValue(unique_visitors, 0.2),
-            traffic_breakdown: {
-              Interno: randomizeValue(Interno, 0.2),
-              Busca: randomizeValue(Busca, 0.2),
-              Social: randomizeValue(Social, 0.2),
-              Direto: randomizeValue(Direto, 0.2),
-              Links: randomizeValue(Links, 0.2)
-            },
-            metrics: {
-              recirculation: `${randomizeValue(recirculation, 0.2)}%`,
-              average_time: `0:${randomizeValue(average_time, 0.2)}`,
-              avg_scroll: `${randomizeValue(avg_scroll, 0.2)}%`,
-              rfv_mean: randomizeValue(rfv_mean, 0.2)
-            }
-          };
-        });
+        const rt = data.realtime || {};
+        const tb = rt.traffic_breakdown || {};
+        const mt = rt.metrics || {};
+
+        return [{
+          visitors_online: randomizeValue(rt.visitors_online || 0, 0.2),
+          today_pageviews: randomizeValue(rt.today_pageviews || 0, 0.2),
+          unique_visitors: randomizeValue(rt.unique_visitors || 0, 0.2),
+          traffic_breakdown: {
+            Interno: randomizeValue(tb.Interno || 0, 0.2),
+            Busca: randomizeValue(tb.Busca || 0, 0.2),
+            Social: randomizeValue(tb.Social || 0, 0.2),
+            Direto: randomizeValue(tb.Direto || 0, 0.2),
+            Links: randomizeValue(tb.Links || 0, 0.2)
+          },
+          metrics: {
+            recirculation: `${randomizeValue(mt.recirculation || 0, 0.2)}%`,
+            average_time: `0:${randomizeValue(mt.average_time || 0, 0.2)}`,
+            avg_scroll: `${randomizeValue(mt.avg_scroll || 0, 0.2)}%`,
+            rfv_mean: randomizeValue(mt.rfv_mean || 0, 0.2)
+          }
+        }];
       });
     }
+
+
+
 
     function getTopPages() {
       return loadAll().then(function (data) {

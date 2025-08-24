@@ -63,15 +63,12 @@
         vm.mainCard = metrics[0];
 
         vm.smallCards = metrics.slice(1);
-
-        $log.info('[leftPanel] Métricas atualizadas', vm.mainCard, vm.smallCards);
       }).catch(function (err) {
         $log.error('[leftPanel] Erro ao atualizar métricas', err);
       });
     }
 
     vm.$onInit = function () {
-      $log.info('[leftPanel] Inicializando e carregando métricas');
 
       updateMetrics();
       $interval(updateMetrics, 10000); 
